@@ -57,7 +57,110 @@ public class BST<Key extends Comparable<Key>, Value>
         return node;
     }
 
+    public Key min()
+    {
+    	if (isEmpty()) throw NoSuchElementException();
+    	Node x = min(root);
+    	return x.key;
+    }
+
+    private Key min(Node x)
+    {
+    	if (x.left == null) return x;
+    	return min(x.left);
+    }
+
+    public Key max()
+    {
+    	if (isEmpty()) throw NoSuchElementException();
+    	Node x = max(root)
+    	return 
+    }
+
+    private Key max(Node x)
+    {
+    	if (x.right == null) return x;
+    	return max(x.right)
+    }
+
+    public Key floor(Key key)
+    {
+    	return floor(root, key);
+    }
+
+    private Node floor(Node x, Key key)
+    {
+    	
+    }
+
+    public int rank(Key key)
+    {
+    	return rank(root, key);
+    }
+
+    private int rank(Node x, Key key)
+    {
+    	if (x.left == null) return 0;
+    	int cmp = key.compareTo(x.key);
+    	if (cmp<0) return rank(x.left, key);
+    	else if (cmp>0) return 1 + size(x.left) + rank(x.right, key);
+    	return size(x.left)
+    }
+
+    public void deleteMin()
+    {
+    	root = deleteMin(root);
+    }
+
+    private Node deleteMin(Node x)
+    {
+    	if (x.left == null) return x.right;
+    	x.left = deleteMin(x.left);
+    	x.n = size(x.left) + size(x.right) + 1;
+    	return x;
+    }
+
+    public void delete(Key key)
+    {
+    	root = delete(root);
+    }
+
+    private Node delete(Node x, Key key)
+    {
+    	if (x == null) return null;
+    	int cmp = key.compareTo(x.key);
+    	if (cmp<0) x.left = delete(x.left, key);
+    	else if (cmp>0) x.right = delete(x.right, key);
+    	else
+    	{
+    		if (x.left == null) return x.right;
+    		if (x.right == null) return x.left;
+    		Node t = x;
+    		x = min(t.right);
+    		x.right = deleteMin(t.right);
+    		x.left = t.left;
+    	}
+    	x.n = size(x.left) + size(x.right) + 1;
+    	return x;
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
