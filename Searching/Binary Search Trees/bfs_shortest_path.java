@@ -20,6 +20,6 @@ public class BFS<Node root, Node target> {
                 }
                 queue.pop();
             }
-        return -1
+        return -1;
     }
 }
