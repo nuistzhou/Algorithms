@@ -5,7 +5,7 @@ public class BFS<Node root, Node target> {
         int step = 0;
         queue.add(root);
         
-        while (not queue.isEmpty):
+        while (not queue.isEmpty()):
             {
                 step += 1;
                 int q_size = queue.size();
